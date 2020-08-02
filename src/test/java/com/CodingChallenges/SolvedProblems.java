@@ -70,5 +70,52 @@ public class SolvedProblems {
 		
 	 }
 	
+	 
+	 public static int getPossiblePair(int[] ar)
+		{
+			int count=0;
+
+			for(int i=0;i<ar.length;i++)
+			{
+				for(int j=0;j<ar.length;j++)
+				{
+					
+					if(i!=j && ar[i]>ar[j]  )
+					{
+						
+						int temp=ar[j];
+						ar[j]=ar[i];
+						ar[i]=temp;
+					}
+				}
+			}
+			
+			
+
+			for(int i=0;i<ar.length;i++)
+			{
+				
+					int j=i+1;
+					for(;j<ar.length;j++)
+					{
+						int k=j+1;
+						for(;k<ar.length;k++)
+						{
+							if(!(k+1>ar.length-1) && ar[j] +ar[k]==ar[i])
+							{
+								count++;
+								System.out.println("Count Possible By:"+ar[j]+","+ar[k]);
+							}
+						}
+					}
+				
+						
+							
+				
+			}
+			return  count;
+		}
+	
+	
 
 }
