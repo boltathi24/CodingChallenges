@@ -116,6 +116,55 @@ public class SolvedProblems {
 			return  count;
 		}
 	
+	public static void checkPatterns(String[] patternsToBeChecked)
+	 {
+		 for(String pattern:patternsToBeChecked)
+			{
+//			 String pattern="xyxyzxyxyzxyxyz";
+			 boolean isNotPattern=false;
+			 boolean isPattern=false;
+			 for(int i=1;i<=(pattern.length()/2);i++)
+			 {
+				String patternToCheck=pattern.substring(0,i);			
+				int split=i;
+				int prevSplit=i;			
+				boolean stillCharLeft=false;
+				for(int k=1;k<=(pattern.length()/split)-1;k++)
+				{				
+					
+					if(!patternToCheck.equalsIgnoreCase(pattern.substring(prevSplit,prevSplit+split)))
+					{					
+						isNotPattern=true;
+						System.out.println("Didnt match:"+pattern.substring(prevSplit,prevSplit+split));
+						break;
+						
+					}
+					prevSplit=prevSplit+split;
+					if((pattern.length()/split)-1==k)
+					{
+						if(patternToCheck.length()==pattern.substring(prevSplit-split, pattern.length()).length())
+						{
+							stillCharLeft=true;
+						}
+						
+					}
+
+				}	
+				
+				if(!isNotPattern && stillCharLeft)
+				{
+					isPattern=true;
+					System.out.println("Pattern Is:"+patternToCheck);
+					break;
+				}
+				isNotPattern=false;
+				
+			 }
+			 
+			}
+			 
+	 }
+	
 	
 
 }
