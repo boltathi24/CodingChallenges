@@ -165,6 +165,56 @@ public class SolvedProblems {
 			 
 	 }
 	
+	public static void getSumOfGreatestPairOfDigit(int[] a) {
+		// TODO Auto-generated method stub
+		
+		int[] b=new int[a.length];
+		for(int i=0;i<a.length;i++)
+		{
+			b[i]=getSumOfDigit(a[i]);
+			
+		}
+		HashMap<Integer,ArrayList<Integer>> pairs=new HashMap<Integer,ArrayList<Integer>>();
+		for(int j=0;j<b.length;j++)
+		{
+			ArrayList<Integer> pair=new ArrayList<Integer>();
+			pair.add(j);
+			for(int k=j+1;k<b.length;k++)
+			{
+				if(b[j]==b[k])
+				{
+					pair.add(k);
+					pairs.put(b[j], pair);
+				}
+			}
+		}
+		ArrayList<Integer> total=new ArrayList<Integer>();
+
+		for(Integer key:pairs.keySet())
+		{
+			ArrayList<Integer> keyValue=pairs.get(key);
+			int temp=0;
+			for(int value:keyValue)
+			{
+				temp=temp+a[value];
+			}
+			total.add(temp);
+		}
+		System.out.println( Collections.max(total));
+	}
+	
+	public static int  getSumOfDigit(int a)
+	{
+		int total=0;
+		while(a!=0)
+		{
+			total=total+a%10;
+			a=a/10;
+		}
+		return total;
+	}
+
+	
 	
 
 }
